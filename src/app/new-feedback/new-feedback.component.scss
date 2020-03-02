@@ -1,0 +1,15 @@
+.create-form {
+  background-color: #FFF;
+  padding: 30px;
+
+  mat-form-field {
+    width: 40%;
+  }
+  .btn-primary, .btn-cancel{
+    width: 150px
+  }
+  .btn-cancel {
+    margin-left: 60px;
+    border: 1px solid gray;
+  }
+}

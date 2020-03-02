@@ -1,0 +1,39 @@
+<div class="create-page">
+  <div class="page-content">
+    <h1 class="header">Create User</h1>
+    <form class="create-form" [formGroup]="userForm" novalidate (ngSubmit)="onSubmit(userForm.value)">
+      <div class="form-group">
+        <mat-form-field class="input-style">
+          <input matInput placeholder="Name" class="form-control" formControlName="name">
+        </mat-form-field>
+        <ng-container *ngFor="let validation of validation_messages.name">
+          <mat-error *ngIf="userForm.get('name').hasError(validation.type) && (userForm.get('name').dirty || userForm.get('name').touched)">{{validation.message}}</mat-error>
+        </ng-container>
+      </div>
+      <div class="form-group">
+        <mat-form-field class="input-style">
+          <input matInput placeholder="User Name" class="form-control" formControlName="userName">
+        </mat-form-field>
+        <ng-container *ngFor="let validation of validation_messages.userName">
+          <mat-error *ngIf="userForm.get('userName').hasError(validation.type) && (userForm.get('userName').dirty || userForm.get('userName').touched)">{{validation.message}}</mat-error>
+        </ng-container>
+      </div>
+      <div class="form-group">
+        <mat-form-field class="input-style">
+          <input matInput placeholder="Password" [type]="hide" formControlName="password" required>
+        </mat-form-field>
+      </div>
+      <div class="row submit-button-container">
+        <div class="col-md-4">
+          <button
+            mat-raised-button
+            class="submit-button"
+            color="primary"
+            type="submit" [disabled]="!userForm.valid">
+            {{btnTitle}}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

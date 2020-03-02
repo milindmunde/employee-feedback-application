@@ -1,0 +1,37 @@
+<div class="feedback-list">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Project Name</th>
+        <th>Rating</th>
+        <th>Comments</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td>{{item.payload.doc.data().project}}</td>
+        <td>
+          <star-rating
+            [(value)]="item.payload.doc.data().rating"
+            [(totalstars)]="element.totalstars"
+            checkedcolor="{{element.checkedcolor}}"
+            uncheckedcolor="{{element.uncheckedcolor}}"
+            size="{{element.size}}"
+            readonly={{element.readonly}}>
+          </star-rating>
+        </td>
+        <td>
+          <mat-label *ngIf="item.payload.doc.data().comment">{{item.payload.doc.data().comment}}</mat-label>
+        </td>
+        <td>
+          <span><i class="material-icons delete-icon" (click)="deleteFeedback(item)">delete</i></span>
+          <span><i class="material-icons edit-icon" (click)="updateFeedback(item)">edit</i></span>
+        </td>
+      </tr>
+      <tr *ngIf="items.length===0">
+        <td colspan="4" class="no-feedback"><mat-label>Feedback not avilable</mat-label></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

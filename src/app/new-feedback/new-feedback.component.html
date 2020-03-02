@@ -1,0 +1,59 @@
+<form class="create-form" [formGroup]="projectForm" novalidate>
+  <div class="form-group">
+    <mat-form-field class="input-style">
+      <input matInput placeholder="EmpName" class="form-control" formControlName="empName">
+    </mat-form-field>
+    <ng-container *ngFor="let validation of validation_messages.empName">
+      <mat-error *ngIf="projectForm.get('empName').hasError(validation.type) && (projectForm.get('empName').dirty || projectForm.get('empName').touched)">{{validation.message}}</mat-error>
+    </ng-container>
+  </div>
+  <div class="form-group">
+    <mat-form-field class="input-style">
+      <input matInput placeholder="EmpId" class="form-control" formControlName="empId">
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field class="input-style">
+      <mat-label>Project *</mat-label>
+      <mat-select formControlName="project">
+        <mat-option *ngFor="let project of projectList" [value]="project.value">
+          {{project.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-label>Rating</mat-label>
+    <star-rating
+      [(value)]="element.value"
+      [(totalstars)]="element.totalstars"
+      checkedcolor="{{element.checkedcolor}}"
+      uncheckedcolor="{{element.uncheckedcolor}}"
+      size="{{element.size}}"
+      (rate)="onRate($event)">
+    </star-rating>
+  </div>
+  <div class="form-group">
+    <mat-form-field class="example-full-width">
+      <mat-label>Leave a comment</mat-label>
+      <textarea matInput  class="form-control" formControlName="comment"></textarea>
+    </mat-form-field>
+  </div>
+  <div class="row submit-button-container">
+    <div class="col-md-6">
+      <button
+        mat-raised-button
+        class="btn btn-primary"
+        (click)="createProject(projectForm.value)"
+        [disabled]="!projectForm.valid">
+        {{btnTitle}}
+      </button>
+      <button
+        mat-raised-button
+        class="btn btn-cancel"
+        (click)="goToListView()">
+        {{btnCancelTitle}}
+      </button>
+    </div>
+  </div>
+</form>

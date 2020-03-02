@@ -1,0 +1,19 @@
+.create-page {
+  padding: 20px 60px;
+
+  .page-content {
+    background-color: #FFF;
+    border: 4px solid;
+    padding: 10% 25%;
+
+    .header {
+      color: green;
+      font-size: 40px;
+      padding-bottom: 20px;
+    }
+
+    mat-form-field {
+      width: 80%;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+.feedback-list {
+    .table {
+        margin: 4%;
+        width: 92%;
+        border: 2px solid green;
+        table-layout: fixed;
+        word-wrap: break-word;
+        thead th {
+            border: 2px solid green;   
+            font-weight: normal;
+        }
+        tbody td {
+            border-right: 2px solid green;   
+        }
+        span {
+            i {
+                color: gray;
+                font-size: 30px;
+                cursor: pointer;
+            }
+            .edit-icon {
+                padding-left: 10px;
+            }
+        }
+        .no-feedback {
+            text-align: center;
+        }
+    }
+}
